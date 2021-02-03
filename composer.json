@@ -1,19 +1,23 @@
 {
-  "name": "entap/web-push-api-test",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "ii masamitsu",
-      "email": "ii@entap.co.jp"
+    "name": "entap/web-push-api-test",
+    "description": "Push API Example",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ii masamitsu",
+            "email": "ii@entap.co.jp"
+        }
+    ],
+    "require": {
+        "minishlink/web-push": "^6.0",
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Entap\\WebPush\\": "src/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S localhost:8080 -t public"
     }
-  ],
-  "require": {
-    "minishlink/web-push": "^6.0",
-    "guzzlehttp/guzzle": "^7.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "Entap\\WebPush\\": "src/"
-    }
-  }
 }
