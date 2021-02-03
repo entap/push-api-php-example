@@ -1,0 +1,19 @@
+{
+  "name": "entap/web-push-api-test",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ii masamitsu",
+      "email": "ii@entap.co.jp"
+    }
+  ],
+  "require": {
+    "minishlink/web-push": "^6.0",
+    "guzzlehttp/guzzle": "^7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Entap\\WebPush\\": "src/"
+    }
+  }
+}
