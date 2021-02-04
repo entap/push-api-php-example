@@ -59,17 +59,17 @@ class SendNotificationService
     {
         $this->publisher->flush();
 
-        // foreach ($this->publisher->flush() as $report) {
-        //   $endpoint = $report
-        //     ->getRequest()
-        //     ->getUri()
-        //     ->__toString();
-
-        //   if ($report->isSuccess()) {
-        //     echo "[v] Message sent successfully for subscription {$endpoint}.";
-        //   } else {
-        //     echo "[x] Message failed to sent for subscription {$endpoint}: {$report->getReason()}";
-        //   }
-        // }
+        foreach ($this->publisher->flush() as $report) {
+            if ($report->isSuccess()) {
+                continue;
+            }
+            error_log(
+                'Error: ' .
+                    $report
+                        ->getRequest()
+                        ->getUri()
+                        ->__toString()
+            );
+        }
     }
 }

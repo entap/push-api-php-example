@@ -25,12 +25,14 @@ $notification = new SendNotificationService(
     new FileSubscriptionRepository()
 );
 
+$notification->sendAll('こんにちは 👋');
+
 // TODO subscriptionをuser_idなどと紐づけて取ってこれるようにするといい
-$notification->send(
-    $subscription['endpoint'],
-    $subscription['keys']['p256dh'],
-    $subscription['keys']['auth'],
-    'こんにちは 👋'
-);
+// $notification->send(
+//     $subscription['endpoint'],
+//     $subscription['keys']['p256dh'],
+//     $subscription['keys']['auth'],
+//     'こんにちは 👋'
+// );
 
 return json_encode(['status' => 'ok']);
