@@ -1,6 +1,4 @@
 self.addEventListener("push", event => {
-    console.info("test");
-
     const textData = event.data.text();
     // const jsonData = event.data.json();
 
