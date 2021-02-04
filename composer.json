@@ -1,5 +1,5 @@
 {
-    "name": "entap/web-push-api-test",
+    "name": "entap/push-api-php-example",
     "description": "Push API Example",
     "license": "MIT",
     "authors": [
@@ -9,8 +9,7 @@
         }
     ],
     "require": {
-        "minishlink/web-push": "^6.0",
-        "guzzlehttp/guzzle": "^7.2"
+        "minishlink/web-push": "^6.0"
     },
     "autoload": {
         "psr-4": {
