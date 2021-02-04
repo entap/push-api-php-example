@@ -11,14 +11,15 @@ PHP Extensions
 
 ## Usage
 
-Generate keys.
+### Generate Keys
 
 ```sh
-mkdir keys
 openssl ecparam -genkey -name prime256v1 -out keys/private_key.pem
 openssl ec -in keys/private_key.pem -pubout -outform DER|tail -c 65|base64|tr -d '=' |tr '/+' '_-' >> keys/public_key.txt
 openssl ec -in keys/private_key.pem -outform DER|tail -c +8|head -c 32|base64|tr -d '=' |tr '/+' '_-' >> keys/private_key.txt
 ```
+
+## Testing
 
 Start the server.
 
@@ -26,3 +27,5 @@ Start the server.
 docker-compose up
 open http://localhost:8080/
 ```
+
+Subscribe してから Publish を押す。
