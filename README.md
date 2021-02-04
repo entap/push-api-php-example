@@ -9,6 +9,8 @@ PHP Extensions
 -   mbstring
 -   openssl
 
+gmp を入れないと実行が遅くなってタイムアウトするが、たまに送れるので注意。
+
 ## Usage
 
 ### Generate Keys
