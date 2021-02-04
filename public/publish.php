@@ -21,7 +21,8 @@ $notification = new SendNotificationService(
     new WebPush($auth),
     new FileSubscriptionRepository()
 );
-// $notification->sendAll('Hello World');
+
+// TODO subscriptionをuser_idなどと紐づけて取ってこれるようにするといい
 $notification->send(
     $subscription['endpoint'],
     $subscription['keys']['p256dh'],
