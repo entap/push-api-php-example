@@ -24,6 +24,7 @@ class SendNotificationService
         $authToken,
         string $payload = null
     ): void {
+        error_log($endpoint . " ||| " . $publicKey . " ||| " . $authToken);
         $subscription = Subscription::create(
             compact('endpoint', 'publicKey', 'authToken')
         );
@@ -35,8 +36,8 @@ class SendNotificationService
         foreach ($this->subscriptions->all() as $subscription) {
             $this->queue(
                 $subscription['endpoint'],
-                $subscription['publicKey'],
-                $subscription['authSecret'],
+                $subscription['keys']['p256dh'],
+                $subscription['keys']['auth'],
                 $payload
             );
         }

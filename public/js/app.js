@@ -1,8 +1,8 @@
 const pushServiceWorkerPath = "/push_service_worker_example.js";
 
-// VAPIDで使用するサーバ公開鍵
+// VAPIDで使用するサーバ公開鍵 (keys/public_key.txtと一致させる)
 const applicationServerKey =
-    "BMBlr6YznhYMX3NgcWIDRxZXs0sh7tCv7_YCsWcww0ZCv9WGg-tRCXfMEHTiBPCksSqeve1twlbmVAZFv7GSuj0";
+    "BNk_iWsKB1ZCgkRoCsnxb4IwoC-pKGqufg0LfuGbmyDQPOWOxzBCryIN1VwRNaPb0JU5W8ixCqziFSb4_l207xQ";
 
 function urlBase64ToUint8Array(base64String) {
     const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
@@ -69,6 +69,12 @@ function subscribe(registration) {
     });
 }
 
+function unsubscribe(registration) {
+    return registration.pushManager
+        .getSubscription()
+        .then(subscription => subscription.unsubscribe());
+}
+
 function contentEncoding() {
     return (PushManager.supportedContentEncodings || ["aesgcm"])[0];
 }
@@ -96,6 +102,13 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(() => navigator.serviceWorker.ready)
             .then(subscribe)
             .then(sendSubscription);
+    });
+
+    const btnUnsubscribe = document.getElementById("btnUnsubscribe");
+    btnUnsubscribe.addEventListener("click", function() {
+        navigator.serviceWorker.ready.then(unsubscribe).catch(e => {
+            console.error("Error when unsubscribing the user", e);
+        });
     });
 
     const btnPublish = document.getElementById("btnPublish");
