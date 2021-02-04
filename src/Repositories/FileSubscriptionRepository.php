@@ -3,25 +3,32 @@ namespace Entap\WebPush\Repositories;
 
 class FileSubscriptionRepository implements SubscriptionRepository
 {
+    protected $fileName = '/tmp/test-push.json';
+
+    public function __construct()
+    {
+        if (!file_exists($this->fileName)) {
+            file_put_contents($this->fileName, json_encode([]));
+        }
+    }
+
     public function save($subscription): void
     {
-        $fileName = '/tmp/posket-mall/test-push.json';
-        $jsonData = json_decode(file_get_contents($fileName), true);
-        if ($jsonData['subscribers']) {
+        $jsonData = [];
+        $contents = file_get_contents($this->fileName);
+        if ($contents) {
+            $jsonData = json_decode($contents, true);
+        }
+        if (!isset($jsonData['subscribers'])) {
             $jsonData['subscribers'] = [];
         }
-        $jsonData['subscribers'][] = [
-            'endpoint' => $subscription['endpoint'],
-            'publicKey' => $subscription['publicKey'],
-            'authSecret' => $subscription['authSecret'],
-        ];
-        file_put_contents($fileName, json_encode($jsonData));
+        $jsonData['subscribers'][] = $subscription;
+        file_put_contents($this->fileName, json_encode($jsonData));
     }
 
     public function all(): array
     {
-        $fileName = '/tmp/posket-mall/test-push.json';
-        $contents = file_get_contents($fileName);
+        $contents = file_get_contents($this->fileName);
         if (empty($contents)) {
             return [];
         }

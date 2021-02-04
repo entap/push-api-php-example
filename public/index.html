@@ -1,13 +1,3 @@
-<?php
-if ($_REQUEST['subscribe']) {
-    require_once __DIR__ . '/vendor/autoload.php';
-
-    $subscriptions = new \Entap\WebPush\Repositories\FileSubscriptionRepository();
-    $subscriptions->save($_POST);
-    echo '{ "status": "ok" }';
-    die();
-} ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>

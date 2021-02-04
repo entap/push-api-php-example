@@ -7,8 +7,8 @@ use Minishlink\WebPush\Subscription;
 
 class SendNotificationService
 {
-    protected WebPush $publisher;
-    protected SubscriptionRepository $subscriptions;
+    protected $publisher;
+    protected $subscriptions;
 
     public function __construct(
         WebPush $publisher,
