@@ -33,7 +33,7 @@ class FileSubscriptionRepository implements SubscriptionRepository
             return [];
         }
         $jsonData = json_decode($contents, true);
-        if ($jsonData['subscribers']) {
+        if (!isset($jsonData['subscribers'])) {
             $jsonData['subscribers'] = [];
         }
         return $jsonData['subscribers'];
