@@ -24,7 +24,6 @@ class SendNotificationService
         $authToken,
         string $payload = null
     ): void {
-        error_log($endpoint . " ||| " . $publicKey . " ||| " . $authToken);
         $subscription = Subscription::create(
             compact('endpoint', 'publicKey', 'authToken')
         );

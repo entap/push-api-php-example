@@ -9,8 +9,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // application/json
 $subscription = json_decode(file_get_contents('php://input'), true);
 
-error_log(json_encode($subscription));
-
 $auth = [
     'VAPID' => [
         'subject' => 'https://github.com/entap',
