@@ -28,5 +28,7 @@ $notification->send(
     $subscription['endpoint'],
     $subscription['keys']['p256dh'],
     $subscription['keys']['auth'],
-    'Hello World'
+    'こんにちは 👋'
 );
+
+return json_encode(['status' => 'ok']);
