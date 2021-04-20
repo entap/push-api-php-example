@@ -2,7 +2,6 @@ version: "3"
 
 services:
     www:
-        container_name: www
         build: ./docker/www
         ports:
             - 8080:80
