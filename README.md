@@ -28,8 +28,9 @@ openssl ec -in keys/private_key.pem -outform DER|tail -c +8|head -c 32|base64|tr
 Start the server.
 
 ```sh
+composer install
 docker-compose up
 open http://localhost:8080/
 ```
 
-Subscribe してから Publish を押す。
+ページを開いたら、Subscribe で通知を許可してから Publish を押す。
